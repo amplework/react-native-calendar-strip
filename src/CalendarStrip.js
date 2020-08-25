@@ -545,7 +545,7 @@ class CalendarStrip extends Component {
             this.renderHeader()
           }
 
-          <View style={styles.datesStrip}>
+          <View style={[styles.datesStrip, { backgroundColor: 'rgb(249, 249, 249)'}]}>
             <WeekSelector
               controlDate={this.props.minDate}
               iconComponent={this.props.leftSelector}
