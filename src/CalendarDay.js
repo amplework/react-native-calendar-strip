@@ -151,7 +151,7 @@ class CalendarDay extends Component {
   calcSizes = props => {
     return {
       containerSize: Math.round(props.size),
-      containerBorderRadius: Math.round(props.size / 2),
+      containerBorderRadius: 0, //Math.round(props.size / 2),
       dateNameFontSize: Math.round(props.size / 5),
       dateNumberFontSize: Math.round(props.size / 2.9)
     };
@@ -458,16 +458,9 @@ class CalendarDay extends Component {
               _dateViewStyle
             ]}
           >
-            {showDayName && (
-              <Text
-                style={[{ fontSize: dateNameFontSize }, _dateNameStyle]}
-                allowFontScaling={allowDayTextScaling}
-              >
-                {date.format("ddd").toUpperCase()}
-              </Text>
-            )}
             {showDayNumber && (
               <View>
+                { this.renderMarking() }
                 <Text
                   style={[
                     { fontSize: dateNumberFontSize },
@@ -477,8 +470,15 @@ class CalendarDay extends Component {
                 >
                   {date.date()}
                 </Text>
-                { this.renderMarking() }
               </View>
+            )}
+            {showDayName && (
+              <Text
+                style={[{ fontSize: dateNameFontSize }, _dateNameStyle]}
+                allowFontScaling={allowDayTextScaling}
+              >
+                {date.format("ddd")}
+              </Text>
             )}
           </View>
         </TouchableOpacity>
